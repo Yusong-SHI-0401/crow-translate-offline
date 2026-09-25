@@ -1,0 +1,15 @@
+name: Tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  unit:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test installer and runtime invariants
+        run: python3 -m unittest discover -s tests -v
+      - name: Check shell syntax
+        run: bash -n install.sh
+      - name: Build source release
+        run: python3 scripts/package.py

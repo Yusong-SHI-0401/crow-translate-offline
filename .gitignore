@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+.cache/
+*.part
+*.log
+.env
+.env.*
+installation.json
